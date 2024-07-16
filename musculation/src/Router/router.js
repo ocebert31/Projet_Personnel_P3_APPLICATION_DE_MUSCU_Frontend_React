@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Inscription from '../Inscription/inscription';
 import Home from '../Home/home';
+import Connexion from '../Connexion/connexion';
 
 function router() {
     return (
@@ -9,6 +10,7 @@ function router() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/inscription" element={<Inscription />} />
+                <Route path="/connexion" element={<Connexion />} />
             </Routes>
         </div>
     )

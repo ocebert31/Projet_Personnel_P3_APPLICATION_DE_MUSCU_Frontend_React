@@ -1,0 +1,16 @@
+.style-title-sign-in {
+    text-align: center;
+}
+
+.alignement {
+    display: grid;
+    justify-content: center;
+}
+
+.style-formulaire {
+    padding: 10px
+}
+
+.style-button-sign-in {
+    margin-top: 10px;
+}
