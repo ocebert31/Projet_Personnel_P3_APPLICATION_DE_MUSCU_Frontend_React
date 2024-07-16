@@ -7,9 +7,10 @@ function header() {
         <div className='style-header'>
             <div>FlexForce</div>
             <Link to='/'>Accueil</Link>
-            <div></div>
-            <Link to='/inscription'>Inscription</Link>
-            <Link to='/connexion'>Connexion</Link>
+            <div className='button-login'>
+            <Link to='/inscription' className='style-button-login'>Inscription</Link>
+            <Link to='/connexion' className='style-button-login'>Connexion</Link>
+            </div>
         </div>
     )
 }

@@ -3,3 +3,11 @@
     justify-content: space-between;
     padding: 10px;
 }
+
+.button-login {
+    justify-content: right;
+}
+
+.style-button-login {
+    padding: 5px;
+}
