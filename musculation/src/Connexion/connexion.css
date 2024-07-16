@@ -1,0 +1,16 @@
+.style-title-sign-up {
+    text-align: center;
+}
+
+.alignement {
+    display: grid;
+    justify-content: center;
+}
+
+.style-formulaire {
+    padding: 10px
+}
+
+.style-button-sign-up {
+    margin-top: 10px;
+}
