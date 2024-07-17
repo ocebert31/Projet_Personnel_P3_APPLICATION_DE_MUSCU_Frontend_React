@@ -8,7 +8,7 @@ function header() {
             <div>FlexForce</div>
             <Link to='/'>Accueil</Link>
             <div className='button-login'>
-            <Link to='/inscription' className='style-button-login'>Inscription</Link>
+            <Link to='/registration' className='style-button-login'>Inscription</Link>
             <Link to='/connexion' className='style-button-login'>Connexion</Link>
             </div>
         </div>

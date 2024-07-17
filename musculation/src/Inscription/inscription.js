@@ -16,7 +16,7 @@ function Inscription() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (checkEmail()) {
+        if (checkEmail() && checkPassword(formData)) {
             const response = await postInscription(formData);
             console.log('Success:', response);
         } else {
@@ -24,6 +24,13 @@ function Inscription() {
         }
             
     };
+
+    const checkPassword = (formData) => {
+        if (formData.password === formData.confirmPassword) { 
+            console.log('Les mots de passe correspondent');
+            return;
+        }
+    }
 
     const checkEmail = () => {
         let validEmail = new RegExp("[a-z0-9\\._%+!$&*=^|~#%'`?{}\\-]+@([a-z0-9\\-]+\\.){1,}([a-z]{2,16})");

@@ -9,7 +9,7 @@ function router() {
         <div>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/inscription" element={<Inscription />} />
+                <Route path="/registration" element={<Inscription />} />
                 <Route path="/connexion" element={<Connexion />} />
             </Routes>
         </div>
