@@ -14,10 +14,21 @@ function Inscription() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        postInscription(formData);
-    };   
+        if (checkEmail()) {
+            const response = await postInscription(formData);
+            console.log('Success:', response);
+        } else {
+            console.error('Error');
+        }
+            
+    };
+
+    const checkEmail = () => {
+        let validEmail = new RegExp("[a-z0-9\\._%+!$&*=^|~#%'`?{}\\-]+@([a-z0-9\\-]+\\.){1,}([a-z]{2,16})");
+        return validEmail.test(formData.email);
+    }
 
     return (
     <div className='alignement'>    
