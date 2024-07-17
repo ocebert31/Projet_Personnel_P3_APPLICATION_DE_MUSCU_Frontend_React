@@ -1,15 +1,24 @@
 async function postInscription(data) {
-    return await fetch('http://localhost:3001/registration', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ user: data })
-    });
-}
-    // return new Promise(() => console.log(`inscription done with params ${JSON.stringify(data)}`));
+    try {
+        const response = await fetch('http://localhost:3001/registration', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ user: data })
+        });
 
-    
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Une erreur est survenue lors de l\'inscription.');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Error during inscription:', error.message);
+        throw error;
+    }
+}
 
 function postConnect(data) {
     return new Promise(() => {
