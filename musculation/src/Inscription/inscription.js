@@ -19,6 +19,7 @@ function Inscription() {
         if (checkEmail() && checkPassword(formData)) {
             try {
                 const response = await postInscription(formData);
+                alert('Un email de confirmation a été envoyé à votre adresse.');
                 console.log(response)
             } catch (error) {
                 console.error('Error during inscription:', error.message);
