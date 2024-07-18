@@ -5,7 +5,8 @@ import {postConnect} from '../API/authentication';
 
 function Connexion() {
     const [formData, setFormData] = useState({email: '', password: ''});
-
+    const [loggedIn, setLoggedIn] = useState(false);
+    
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -22,6 +23,7 @@ function Connexion() {
                 localStorage.setItem('token', token);
                 localStorage.setItem('user', JSON.stringify(user));
                 console.log('Success: User logged in', user);
+                setLoggedIn(true)
             }
         } catch (error) {
           console.error('Error:', error.message);
@@ -31,6 +33,11 @@ function Connexion() {
     const checkEmail = () => {
         let validEmail = new RegExp("[a-z0-9\\._%+!$&*=^|~#%'`?{}\\-]+@([a-z0-9\\-]+\\.){1,}([a-z]{2,16})");
         return validEmail.test(formData.email);
+    }
+
+     // Redirection si loggedIn est vrai
+     if (loggedIn) {
+        return <Link to="/" />;
     }
 
     return (
