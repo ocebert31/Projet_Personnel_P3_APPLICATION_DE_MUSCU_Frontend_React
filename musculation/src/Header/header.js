@@ -1,18 +1,27 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import './header.css';
-import {Link} from "react-router-dom";
+import { useAuth } from '../AuthContext';
 
-function header() {
+function Header() {
+    const { loggedIn, logout } = useAuth();
+
     return (
         <div className='style-header'>
             <div>FlexForce</div>
             <Link to='/'>Accueil</Link>
             <div className='button-login'>
-            <Link to='/registration' className='style-button-login'>Inscription</Link>
-            <Link to='/connexion' className='style-button-login'>Connexion</Link>
+                {loggedIn ? (
+                    <button className='style-button-login' onClick={logout}>Déconnexion</button>
+                ) : (
+                    <>
+                        <Link to='/registration' className='style-button-login'>Inscription</Link>
+                        <Link to='/connexion' className='style-button-login'>Connexion</Link>
+                    </>
+                )}
             </div>
         </div>
-    )
+    );
 }
 
-export default header;
+export default Header;

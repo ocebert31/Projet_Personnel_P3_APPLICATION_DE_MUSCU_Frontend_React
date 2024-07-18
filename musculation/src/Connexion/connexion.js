@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import './connexion.css';
 import {postConnect} from '../API/authentication';
+import { useAuth } from '../AuthContext';
 
 function Connexion() {
     const [formData, setFormData] = useState({email: '', password: ''});
-    const [loggedIn, setLoggedIn] = useState(false);
+    const navigate = useNavigate();
+    const { login } = useAuth();
     
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,7 +25,8 @@ function Connexion() {
                 localStorage.setItem('token', token);
                 localStorage.setItem('user', JSON.stringify(user));
                 console.log('Success: User logged in', user);
-                setLoggedIn(true)
+                login()
+                navigate('/');
             }
         } catch (error) {
           console.error('Error:', error.message);
@@ -33,11 +36,6 @@ function Connexion() {
     const checkEmail = () => {
         let validEmail = new RegExp("[a-z0-9\\._%+!$&*=^|~#%'`?{}\\-]+@([a-z0-9\\-]+\\.){1,}([a-z]{2,16})");
         return validEmail.test(formData.email);
-    }
-
-     // Redirection si loggedIn est vrai
-     if (loggedIn) {
-        return <Link to="/" />;
     }
 
     return (

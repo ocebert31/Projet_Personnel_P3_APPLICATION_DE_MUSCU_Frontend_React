@@ -1,12 +1,21 @@
 import React from 'react';
 import './home.css';
+import { useAuth } from '../AuthContext';
 
-function home() {
+function Home() {
+    const { loggedIn } = useAuth();
+
     return (
-        <h1 className='style-title-home'>
-            Accueil
-        </h1>
+        <div>
+            {loggedIn ? (
+                <h1 className='style-title-home'>Vous êtes connecté</h1>
+            ) : (
+                <h1 className='style-title-home'>
+                    Accueil
+                </h1>
+            )}
+        </div>
     )
 }
 
-export default home;
+export default Home;
