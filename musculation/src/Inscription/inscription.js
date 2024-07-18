@@ -19,7 +19,7 @@ function Inscription() {
         if (checkEmail() && checkPassword(formData)) {
             try {
                 const response = await postInscription(formData);
-                console.log('Success:', response);
+                console.log(response)
             } catch (error) {
                 console.error('Error during inscription:', error.message);
             }
@@ -71,6 +71,7 @@ function Inscription() {
         </form>
     </div>
     )
+
 }
 
 export default Inscription;

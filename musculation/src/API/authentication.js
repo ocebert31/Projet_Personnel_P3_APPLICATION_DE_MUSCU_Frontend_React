@@ -20,12 +20,30 @@ async function postInscription(data) {
     }
 }
 
-function postConnect(data) {
-    return new Promise(() => {
-        console.log(`connexion done with params ${JSON.stringify(data)}`);
-        return {user: {id: 1, firstName: 'Emeric'}, token: 'TOKEN'};
-    });
+async function postConnect(data) {
+    try {
+      const response = await fetch('http://localhost:3001/sessions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Email ou mot de passe incorrect.');
+      }
+  
+      const responseData = await response.json();
+      const { user, token } = responseData;
+  
+      return { user, token };
+    } catch (error) {
+      console.error('Error during connection:', error.message);
+      throw error;
+    }
 }
+  
 
 function postDisconnect() {
     return new Promise(() => console.log(`disconnect done`));

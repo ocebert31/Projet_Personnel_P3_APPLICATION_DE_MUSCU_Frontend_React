@@ -16,13 +16,16 @@ function Connexion() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (checkEmail()) {
-            const response = await postConnect(formData);
-            console.log('Success:', response);
-        } else {
-            console.error('Error');
+        try {
+            if(checkEmail()) {
+                const { user, token } = await postConnect(formData);
+                localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(user));
+                console.log('Success: User logged in', user);
+            }
+        } catch (error) {
+          console.error('Error:', error.message);
         }
-            
     };
 
     const checkEmail = () => {
